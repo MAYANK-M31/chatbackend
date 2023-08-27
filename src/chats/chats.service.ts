@@ -27,6 +27,7 @@ export class ChatsService {
 
     return this.chatRepository.find(findOptions);
   }
+  
 
   findOne(id: number) {
     return `This action returns a #${id} chat`;
