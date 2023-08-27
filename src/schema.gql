@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Chat {
+  id: Int!
+  message: String!
+  chatRoomId: Int!
+  user: Boolean!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Room {
+  id: Int!
+  messages: [Chat!]
+  chats: [Chat!]!
+}
+
+type Query {
+  rooms: [Room!]!
+  chats(id: Int!): [Chat!]!
+  chat(id: Int!): Chat!
+}
+
+type Mutation {
+  createRoom(createRoomInput: createRoomInput!): Room!
+  createChat(createChatInput: CreateChatInput!): Chat!
+  removeChat(id: Int!): Chat!
+}
+
+input createRoomInput {
+  id: Boolean
+}
+
+input CreateChatInput {
+  message: String!
+  chatRoomId: Int!
+  user: Boolean!
+}
+
+type Subscription {
+  newChatMessage(chatRoomId: Int!): Chat!
+}
